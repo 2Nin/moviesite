@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Todos os Filmes</h2>
+{% if movie_list %}
+<section class="lista-de-cards">
+  {% for movie in movie_list %}
+  <article class="card">
+    <a href="{% url 'movies:detail' forloop.counter %}"
+      ><img src="{{ movie.poster_url }}" alt="Poster do filme {{ movie.name}}"
+    /></a>
+    <p>{{ movie.name }} ({{ movie.release_year }})</p>
+  </article>
+  {% endfor %}
+</section>
+{% else %}
+<p>Não foi encontrado nenhum filme.</p>
+{% endif %} {% endblock content %}
